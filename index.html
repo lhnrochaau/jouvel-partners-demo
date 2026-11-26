@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en-AU">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Jouvèl Partners</title>
+<style>
+*{box-sizing:border-box}
+:root{color:#1c1a17;background:#f5f2eb;font:16px/1.55 system-ui,sans-serif;--ink:#1c1a17;--wine:#4a1520;--accent:#6e2130;--muted:#655047;--line:#ded3c4;--paper:#fffdf9}
+[hidden]{display:none!important}
+body{margin:0}
+main{max-width:1240px;margin:auto;padding:0 clamp(1rem,4vw,3.25rem) 3rem}
+h1,h2,h3,strong{font-family:Georgia,serif;font-weight:400}
+h1{font-size:clamp(2.5rem,6vw,4.7rem);line-height:1.02;margin:.45rem 0 1rem}
+h2{font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.15;margin:0 0 1rem;color:var(--wine)}
+small{font-size:.875rem}
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:.85rem;min-width:0}
+.brand img{width:clamp(5.5rem,15vw,8rem);height:auto}
+.brand span{font-size:.875rem;color:var(--muted)}
+.demo-label{font-size:.875rem;color:var(--muted);text-align:right}
+.welcome{display:grid;grid-template-columns:1fr .85fr;min-height:27rem;align-items:stretch;margin-top:2rem;background:var(--paper);border:1px solid var(--line);border-radius:1rem;overflow:hidden}
+.welcome-content{align-self:center;padding:clamp(1.25rem,5vw,4rem);min-width:0}
+.welcome-content p{max-width:35ch;color:var(--muted)}
+.welcome-image{background:#e9e4da;min-height:12rem;position:relative}
+.welcome-image img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:50% 48%}
+.field{margin:1rem 0}
+label{display:block;margin:0 0 .4rem;font-size:.9rem;font-weight:600}
+input,select{font:inherit;color:var(--ink);border:1px solid #bcac9d;border-radius:.5rem;background:#fff;padding:.65rem;max-width:100%;min-height:44px}
+.welcome select,.welcome input{width:100%}
+button{font:inherit;min-height:44px;border:1px solid transparent;border-radius:.5rem;background:var(--accent);color:white;padding:.65rem 1rem;cursor:pointer}
+button:hover:not(:disabled){filter:brightness(.92)}
+button:disabled{opacity:.52;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.quiet{background:transparent;color:var(--wine);border-color:#b8a692}
+.account{display:flex;align-items:center;justify-content:space-between;gap:.85rem;padding:1.65rem 0 .9rem}
+.account h1{overflow-wrap:anywhere;margin:.3rem 0;font-size:clamp(1.75rem,4vw,3.2rem)}
+.account small{color:var(--muted)}
+nav{display:flex;gap:.35rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:.15rem 0 .85rem}
+nav button{background:transparent;color:var(--wine)}
+nav button[aria-pressed="true"]{background:var(--wine);color:white}
+section{margin-top:1.65rem}
+.top,.split{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center}
+.split{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:stretch}
+.panel,.stats article,.data-card{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:.85rem;padding:clamp(1rem,2.8vw,1.5rem)}
+.panel p{margin:.45rem 0 .9rem}
+.hero{background:var(--wine);color:#f5f2eb;border-color:var(--wine)}
+.hero h2{color:#fff}.hero p,.hero label{color:#eddfd4}
+.hero input{width:100%;margin:0 0 .7rem}
+.hero button{background:#f5f2eb;color:var(--wine)}
+strong{display:block;font-size:clamp(1.45rem,3vw,2.15rem)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.7rem;margin-top:1rem}
+.stats article{font-size:.875rem;color:var(--muted)}
+.stats strong{margin-top:.35rem;color:var(--wine)}
+progress{width:100%;accent-color:var(--accent)}
+.scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap;font-size:.925rem}
+th,td{padding:.75rem .65rem;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--muted)}
+tbody tr:last-child td{border-bottom:0}
+.panel h3{color:var(--wine);font-size:1.35rem;margin:1.25rem 0 .4rem}
+.panel h3:first-child{margin-top:0}
+#notice,#login-status,#copy-status{overflow-wrap:anywhere}
+@media(max-width:740px){.split{grid-template-columns:1fr}.welcome{grid-template-columns:1fr;min-height:0}.welcome-image{min-height:clamp(11rem,46vw,16rem);grid-row:1}.welcome-content{padding:1.25rem}.account{padding-top:1rem}nav{gap:.2rem}nav button{padding:.55rem .65rem}}
+@media(max-width:480px){
+ .brand span{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .data-card .scroll{overflow:visible}
+ .data-card table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ .data-card table,.data-card tbody,.data-card tr{display:block}
+ .data-card tr{padding:.6rem 0;border-bottom:1px solid var(--line)}
+ .data-card tr:last-child{border-bottom:0}
+ .data-card td{display:flex;justify-content:space-between;gap:.65rem;white-space:normal;overflow-wrap:anywhere;border:0;padding:.25rem;text-align:right}
+ .data-card td::before{content:attr(data-label);color:var(--muted);text-align:left;flex-shrink:0}
+ .data-card td[colspan]{display:block;text-align:left}
+}
+/* Jouvèl document workspace */
+.invoice-intro{max-width:42rem;margin-bottom:1.7rem}
+.invoice-intro h2{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin-bottom:.65rem;color:#4a1520}
+.invoice-intro p,.invoice-hint{color:#5a4a40}
+.invoice-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.25rem;align-items:start}
+.invoice-stack{display:grid;gap:1.25rem;min-width:0}
+.invoice-card{min-width:0;background:#fffdf9;border:1px solid #e3d9cb;border-radius:1rem;overflow:hidden;box-shadow:0 12px 28px #4a15200b}
+.invoice-band{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.45rem;background:#4a1520;color:#f5f2eb}
+.invoice-brand[hidden]{display:none}
+.invoice-brand{width:7.5rem;height:auto;display:block}
+.invoice-band small{color:#eed9a4;text-align:right}
+.invoice-content{padding:clamp(1rem,3vw,1.5rem)}
+.invoice-content h3,.invoice-form h3{font:normal clamp(1.5rem,3vw,2rem)/1.15 Georgia;margin:0 0 .55rem;color:#4a1520}
+.invoice-total{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.65rem;align-items:end;background:#f5f2eb;padding:1rem;margin:1rem 0;border-radius:.65rem}
+.invoice-total strong{color:#6e2130}
+.invoice-meta,.invoice-total span{color:#5a4a40;font-size:.9rem;overflow-wrap:anywhere}
+.invoice-table{font-size:.875rem}
+.invoice-table th,.invoice-table td{padding:.7rem .45rem}
+.invoice-table th:last-child,.invoice-table td:last-child{text-align:right}
+.invoice-table td{white-space:normal;overflow-wrap:anywhere}
+.invoice-actions{padding:0 clamp(1rem,3vw,1.5rem) 1.3rem}
+.invoice-actions button,.invoice-form button{min-height:46px;border-radius:.55rem}
+.invoice-actions button{color:#6e2130;background:#fffdf9;border:1px solid #b49179}
+.invoice-form{padding:clamp(1rem,3vw,1.5rem);border-top:3px solid #a9824f}
+.invoice-form label{font-weight:600}
+.invoice-form select,.invoice-form input{box-sizing:border-box;width:100%;min-width:0;min-height:46px;border:1px solid #bbab9f;border-radius:.5rem;background:#fff;color:#1c1a17;padding:.6rem;font-size:1rem}
+.invoice-upload{background:#f5f2eb;border:1px dashed #a9824f;border-radius:.65rem;padding:.85rem;margin:1rem 0}
+.invoice-upload input{border:0;background:transparent;padding:.3rem 0}
+.invoice-upload input::file-selector-button{font:inherit;color:#6e2130;background:white;border:1px solid #cfbdb0;border-radius:.4rem;padding:.45rem;margin-right:.5rem}
+#invoice-status{min-height:1.5em;overflow-wrap:anywhere}
+#invoices :focus-visible{outline:2px solid #6e2130;outline-offset:3px}
+@media screen and (max-width:740px){
+  .invoice-layout{grid-template-columns:minmax(0,1fr)}
+}
+@media screen and (max-width:480px){
+  .invoice-actions button,.invoice-form button{width:100%}
+  .invoice-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .invoice-table,.invoice-table tbody,.invoice-table tr{display:block}
+  .invoice-table tr{background:#f5f2eb;border-radius:.5rem;padding:.45rem .7rem;margin:.65rem 0}
+  .invoice-table td,.invoice-table td:last-child{display:flex;justify-content:space-between;gap:.75rem;border:0;text-align:right;padding:.3rem 0}
+  .invoice-table td::before{content:attr(data-label);color:#5a4a40;text-align:left;flex-shrink:0}
+  .invoice-table td[colspan]{display:block;text-align:left}
+}
+@media print {
+  body.printing main > :not(#dashboard), body.printing #dashboard > :not(#invoices),
+  body.printing #invoices > :not(.invoice-layout), body.printing .invoice-layout > :not(.statement-card),
+  body.printing .statement-card > :not(#statement) { display:none !important }
+  body.printing .invoice-layout{display:block}
+  body.printing .statement-card{border:0;box-shadow:none;overflow:visible}
+  body.printing #statement .invoice-band{background:#fff;color:#4a1520;padding-inline:0;border-bottom:1px solid #a9824f}
+  body.printing #statement .invoice-band small{color:#4a1520}
+  body.printing .invoice-content{padding-inline:0}
+  body.printing #statement .scroll{overflow:visible}
+  body.printing #statement tr{break-inside:avoid}
+}
+
+.onboarding{max-width:53rem;margin:2rem auto}
+.onboarding label{margin-top:.75rem}
+.onboarding input,.onboarding select,.onboarding textarea{width:100%}
+.onboarding textarea{font:inherit;border:1px solid #bcac9d;border-radius:.5rem;padding:.65rem;min-height:6rem}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1rem}
+.form-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+.admin-workspace{max-width:none}
+.admin-workspace .top h2,.admin-workspace .account h2{margin-bottom:0}
+.application-record{border-top:1px solid var(--line);padding:1rem 0}
+.application-record p{overflow-wrap:anywhere}
+.channels{border:1px solid var(--line);padding:1rem 1.2rem;margin:1.2rem 0}
+.channels legend{font-weight:600;padding:0 .4rem}
+.channels .hint{font-size:.9em;opacity:.75;margin:.2rem 0 .8rem}
+.test-mail{position:fixed;right:1rem;bottom:1rem;z-index:50;max-width:min(26rem,calc(100vw - 2rem));background:var(--paper);border:1px dashed #bcac9d;border-radius:.75rem;font-size:.875rem;box-shadow:0 6px 24px rgba(0,0,0,.08)}.test-mail summary{cursor:pointer;padding:.55rem .9rem;color:var(--muted);list-style:none}.test-mail summary::-webkit-details-marker{display:none}.test-mail-body{max-height:60vh;overflow:auto;padding:0 .9rem .9rem}.test-mail h3{font-size:1rem;margin:.3rem 0 0}@media print{.test-mail{display:none}}
+.mail{border-top:1px solid var(--line);padding:.8rem 0}
+.mail small{opacity:.7}
+.mail pre{white-space:pre-wrap;font:inherit;margin:.4rem 0 0}
+.channel-links{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin:.2rem 0 .6rem}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}.form-actions button{flex:1 1 auto}}
+</style>
+<main>
+<header class="masthead">
+<div class="brand"><img src="assets/Jouvel-wordmark-oxblood.png" alt="Jouvèl"><span>Partners</span></div>
+<span class="demo-label">Test portal</span>
+</header>
+<div class="welcome" id="login">
+<form class="welcome-content" id="login-form">
+<h1>Welcome to Jouvèl Partners</h1>
+<p>Sign in to view your referral link, commissions and partner documents.</p>
+<div class="field"><label for="user">Email</label><input id="user" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" required></div>
+<div class="field" id="code-step" hidden><label for="password">6-digit code from your email</label><input id="password" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6"></div>
+<div class="form-actions"><button id="login-button">Email me a code</button><button class="quiet" type="button" id="open-apply">Apply to become a partner</button></div><p id="login-status" role="status"></p>
+</form>
+<div class="welcome-image"><img src="assets/joanne-brown-caramel-frente.jpg" alt=""></div>
+</div>
+<details id="demo-inbox" class="test-mail">
+<summary>Test emails <span id="inbox-count"></span></summary>
+<div class="test-mail-body">
+<p>Test only. Emails the portal would send from marketing@jouvelcollection.com. Nothing is sent and this panel does not exist in the live portal.</p>
+<div id="inbox-list"></div>
+<button class="quiet" type="button" id="inbox-clear">Clear test emails</button>
+</div>
+</details>
+<section id="application" class="onboarding panel" hidden>
+<h2>Apply to become a Jouvèl partner</h2>
+<p>Márcia Percival reviews applications. Use fictional details in this test portal.</p>
+<form id="application-form">
+<div class="form-grid">
+<div><label for="app-name">Full name</label><input id="app-name" name="name" required maxlength="100"></div>
+<div><label for="app-email">Email</label><input id="app-email" name="email" type="email" required maxlength="160"></div>
+<div><label for="app-country">Country of residence</label><select id="app-country" name="country"><option>Australia</option><option>Other</option></select></div>
+</div>
+<fieldset class="channels" id="app-channels">
+<legend>Where will you share Jouvèl?</legend>
+<p class="hint">Add the link to each channel where you will post about Jouvèl. At least one is required. We review posts on these channels during the partnership.</p>
+<div class="form-grid">
+<div><label for="app-instagram">Instagram profile URL</label><input id="app-instagram" name="instagram" type="url" maxlength="200" placeholder="https://www.instagram.com/yourname" data-host="instagram.com"></div>
+<div><label for="app-tiktok">TikTok profile URL</label><input id="app-tiktok" name="tiktok" type="url" maxlength="200" placeholder="https://www.tiktok.com/@yourname" data-host="tiktok.com"></div>
+<div><label for="app-youtube">YouTube channel URL</label><input id="app-youtube" name="youtube" type="url" maxlength="200" placeholder="https://www.youtube.com/@yourchannel" data-host="youtube.com"></div>
+<div><label for="app-facebook">Facebook page URL</label><input id="app-facebook" name="facebook" type="url" maxlength="200" placeholder="https://www.facebook.com/yourpage" data-host="facebook.com"></div>
+</div>
+</fieldset>
+<label for="app-bio">Tell us about you and your audience</label>
+<textarea id="app-bio" name="bio" required maxlength="800"></textarea>
+
+<div class="form-actions"><button>Submit application</button><button class="quiet" type="button" data-back>Back to sign in</button></div>
+<p id="application-status" role="status"></p>
+</form>
+</section>
+<section id="review" class="onboarding admin-workspace" hidden>
+<div class="account"><div><small>Jouvèl Partners · Admin demo</small><h2>Márcia’s workspace</h2></div>
+<button class="quiet" type="button" id="admin-logout">Sign out</button></div>
+<div class="stats" aria-label="Program overview">
+<article>Pending applications<strong id="admin-pending"></strong></article>
+<article>Approved applications<strong id="admin-approved"></strong></article>
+<article>Partners with sales<strong id="admin-selling"></strong></article>
+<article>Partners without sales<strong id="admin-inactive"></strong></article>
+</div>
+<section class="data-card">
+<div class="top"><h2>Partner performance</h2><div><label for="admin-month">Reporting month</label><select id="admin-month"><option value="2026-12">December 2026</option><option value="2026-11">November 2026</option></select></div></div>
+<p>Ranked by net attributed sales in AUD. Demo data only.</p>
+<div class="scroll"><table><thead><tr><th>Partner</th><th>Activity</th><th>Orders</th><th>Net sales</th></tr></thead><tbody id="admin-ranking"></tbody></table></div>
+</section>
+<section class="data-card">
+<div class="top"><h2>Applications</h2><div><label for="application-filter">Show applications</label><select id="application-filter"><option value="">All statuses</option><option>Pending</option><option>Approved</option><option>Declined</option></select></div></div>
+<p>Approval creates an individual access link for this browser.</p>
+<div id="review-list"></div>
+</section>
+</section>
+<div id="dashboard" hidden>
+<div class="account"><div><small>Partner account · AUD</small><h1 id="owner"></h1></div><button class="quiet" id="logout">Sign out</button></div>
+<nav aria-label="Partner portal">
+<button data-tab="overview" aria-pressed="true">Overview</button>
+<button data-tab="activity" aria-pressed="false">Sales & payouts</button>
+<button data-tab="invoices" aria-pressed="false">Invoices & statements</button>
+<button data-tab="returns" aria-pressed="false">Returns</button>
+<button data-tab="policy" aria-pressed="false">Program policy</button>
+</nav>
+<section id="overview">
+<div class="split">
+<article class="panel hero"><h2>Your referral link</h2><p>Preview link for your audience. Tracking is simulated here.</p>
+<label for="referral">Shareable link</label><input id="referral" readonly><button id="copy">Copy link</button><p id="copy-status" role="status"></p></article>
+<article class="panel"><h2>Current commission</h2><strong id="tier"></strong><p id="tier-detail"></p><progress aria-label="Progress towards the next commission band" id="progress" max="11" value="0"></progress><p><small>Monthly reset shown for testing. Final counting rule is pending.</small></p></article>
+</div>
+<section aria-labelledby="summary-title"><h2 id="summary-title">Performance</h2>
+<div class="top"><div><label for="month">Reporting month</label><select id="month"></select></div>
+<div><label for="date">Simulation date</label><input id="date" type="date" value="2026-12-15"></div></div>
+<div class="stats" aria-label="Commission summary">
+<article>Attributed orders<strong id="order-count"></strong></article>
+<article>Net sales<strong id="net-sales"></strong></article>
+<article>On hold · all months<strong id="hold"></strong></article>
+<article>Available · all months<strong id="available"></strong></article>
+<article>Requested · all months<strong id="requested"></strong></article>
+</div></section>
+<section class="data-card"><h2>Monthly summary</h2><div class="scroll"><table><thead><tr><th>Month</th><th>Orders</th><th>Eligible bags</th><th>Net sales</th><th>Commission</th><th>Retained</th><th>Available</th><th>Requested</th></tr></thead><tbody id="months"></tbody></table></div></section>
+</section>
+<section id="activity" class="data-card" hidden><div class="top"><h2>Sales & payouts</h2><button id="request">Request payout</button></div>
+<p id="notice" role="status"></p><div class="scroll"><table>
+<thead><tr><th>Order</th><th>Paid date</th><th>Delivered</th><th>Rate</th><th>Commission</th><th>Status</th></tr></thead><tbody id="orders"></tbody></table></div>
+<p><button class="quiet" id="reset">Reset demo</button></p></section>
+<section id="invoices" hidden aria-labelledby="invoice-title">
+<div class="invoice-intro">
+<h2 id="invoice-title">Invoices &amp; statements</h2>
+<p>Print your commission statement or save it as a PDF. Check your supplier invoice before submitting it.</p>
+</div>
+<div class="invoice-layout">
+<div class="invoice-card statement-card">
+<article id="statement" style="padding:0;border:0">
+<div class="invoice-band">
+<img class="invoice-brand" src="assets/Jouvel-wordmark-bone.png" alt="Jouvèl" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+<span hidden>JOUVÈL</span>
+<small>Partner documents</small>
+</div>
+<div class="invoice-content">
+<h3>Commission statement</h3>
+<p class="invoice-meta">Demo document · Not a tax invoice</p>
+<p class="invoice-meta">Partner: <span id="statement-owner"></span></p>
+<div class="invoice-total"><span>Requested commissions · AUD</span><strong id="statement-total"></strong></div>
+<div class="scroll"><table class="invoice-table" role="table" aria-label="Requested commissions"><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Order</th><th scope="col" role="columnheader">Paid date</th><th scope="col" role="columnheader">Payout reference</th><th scope="col" role="columnheader">Commission</th></tr></thead><tbody role="rowgroup" id="statement-rows"></tbody></table></div>
+</div>
+</article>
+<div class="invoice-actions"><button id="print-statement">Print or save as PDF</button></div>
+</div>
+<div class="invoice-stack">
+<form class="invoice-card invoice-form" id="payout-profile" hidden>
+<h3>Australian payout details</h3>
+<p class="invoice-hint">Set up your identity and bank details before receiving payouts. Use the sample options in this demo.</p>
+<div class="field"><label for="payout-identity">Identity document</label><select id="payout-identity" required><option value="">Choose a demo document</option><option value="licence">Australian driver licence · demo</option><option value="passport">Australian passport · demo</option></select></div>
+<div class="field"><label for="payout-bank">Bank account</label><select id="payout-bank" required><option value="">Choose a demo account</option><option value="sample">Australian bank account · demo ••6789</option></select></div>
+<button>Save payout details</button>
+<p id="payout-profile-status" role="status"></p>
+</form>
+<form class="invoice-card invoice-form" id="invoice-form">
+<h3>Supplier invoice</h3>
+<p class="invoice-hint">Use a tax invoice if the service is taxable and you are registered for GST. Otherwise, use an invoice without GST.</p>
+<label for="supplier-gst">GST status</label>
+<select id="supplier-gst" required><option value="">Select your status</option><option>Registered for GST</option><option>Not registered for GST</option><option>Unsure / refer for review</option></select>
+<div class="invoice-upload"><label for="invoice-file">Invoice PDF</label><input id="invoice-file" type="file" accept=".pdf,application/pdf" required aria-describedby="invoice-status"></div>
+<button>Check attachment</button>
+<p class="invoice-hint" id="invoice-status" role="status">Demo only. The file stays on this device.</p>
+</form>
+</div>
+</div>
+</section>
+<section id="returns" class="data-card" hidden><h2>Returns</h2><p>Open returns hold the commission. Full refunds reverse it and partial refunds reduce the eligible amount.</p>
+<div class="scroll"><table><thead><tr><th>Order</th><th>Return status</th><th>Commission adjustment</th></tr></thead><tbody id="return-rows"></tbody></table></div></section>
+<section id="policy" hidden><h2>Program policy</h2><article class="panel">
+<h3>Commission bands in the demo</h3><ul><li>1–10 eligible bags · 10%</li><li>11–50 eligible bags · 12%</li><li>51+ eligible bags · 15%</li></ul>
+<p>The higher rate applies to bags in that band. The demo resets the count each month. The final counting period is pending approval.</p>
+<h3>Commission base</h3><p>Eligible product value in AUD after discounts, excluding GST and shipping where applicable. Refunded product amounts reduce the base.</p>
+<h3>Payout availability</h3><p>Available from 30 days after confirmed delivery, with longer applicable return windows and unresolved returns or disputes keeping the payment on hold.</p>
+</article></section>
+</div>
+</main>
+<script>
+const HOLD_MS = 30 * 24 * 60 * 60 * 1000;
+
+function commissionStatus(sale, now) {
+  if (sale.netCents <= 0) return 'Reversed';
+  if (!sale.deliveredAt || sale.returnOpen || now - Date.parse(sale.deliveredAt) < HOLD_MS) {
+    return 'On hold';
+  }
+  return 'Available';
+}
+
+function commissionCents(sale) {
+  return Math.round(Math.max(0, sale.netCents) * sale.rate / 100);
+}
+
+const $ = id => document.getElementById(id);
+const aud = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' });
+const display = cents => aud.format(cents / 100);
+const paidDates = {'Demo 001':'2026-11-05','Demo 002':'2026-12-01','Demo 003':'2026-11-04','Demo 004':'2026-11-02','Demo 005':'2026-12-03','Demo 006':'2026-11-01'};
+const demoSales = [
+  ['influencer.demo','Demo 001','2026-11-10',15000,10,false],
+  ['influencer.demo','Demo 002','2026-12-04',18000,10,false],
+  ['influencer.demo','Demo 003','2026-11-08',12000,10,true],
+  ['influencer.demo','Demo 004','2026-11-04',0,10,false],
+  ['influencer.demo','Demo 005',null,20000,10,false],
+  ['teste.demo','Demo 006','2026-11-01',20000,10,false]
+];
+let owner = '';
+let isAdmin = false;
+let requests = {};
+const storageKey = 'jouvel-offline-demo';
+try { requests = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch {}
+const applicationKey = 'jouvel-applications-demo';
+let applications = [];
+try { applications = JSON.parse(localStorage.getItem(applicationKey)) || []; } catch {}
+if (!Array.isArray(applications)) applications = [];
+const payoutProfileKey = 'jouvel-payout-profiles-demo';
+let payoutProfiles = {};
+try { payoutProfiles = JSON.parse(localStorage.getItem(payoutProfileKey)) || {}; } catch {}
+const inboxKey = 'jouvel-demo-inbox';
+let inbox = [];
+try { inbox = JSON.parse(localStorage.getItem(inboxKey)) || []; } catch {}
+const ADMIN_EMAIL = 'marcia@example.com';
+const demoPartners = { 'influencer@example.com': 'influencer.demo', 'teste@example.com': 'teste.demo' };
+const PORTAL = 'https://partners.jouvel.com.au';
+let pendingCode = null;
+function sendDemoMail(to, subject, text) {
+  inbox.unshift({ to, subject, text, at: new Date().toLocaleString('en-AU') });
+  inbox = inbox.slice(0, 30);
+  try { localStorage.setItem(inboxKey, JSON.stringify(inbox)); } catch {}
+  renderInbox();
+  const panel = $('demo-inbox'); if (panel) panel.open = true;
+}
+function renderInbox() {
+  const list = $('inbox-list');
+  if (!list) return;
+  list.replaceChildren();
+  const count = $('inbox-count'); if (count) count.textContent = inbox.length ? '(' + inbox.length + ')' : '';
+  if (!inbox.length) { list.textContent = 'No emails yet.'; return; }
+  for (const mail of inbox) {
+    const item = document.createElement('article');
+    item.className = 'mail';
+    const meta = document.createElement('small');
+    meta.textContent = mail.at + ' · From marketing@jouvelcollection.com · To ' + mail.to;
+    const subject = document.createElement('h3');
+    subject.textContent = mail.subject;
+    const body = document.createElement('pre');
+    body.textContent = mail.text;
+    item.append(meta, subject, body);
+    list.append(item);
+  }
+}
+function accountFor(email) {
+  if (email === ADMIN_EMAIL) return { role: 'admin' };
+  if (demoPartners[email]) return { role: 'partner', owner: demoPartners[email] };
+  const approved = applications.find(item => item.status === 'Approved' && item.email === email);
+  if (approved) return { role: 'partner', owner: 'partner-' + approved.token };
+  return null;
+}
+function saveApplications() {
+  try { localStorage.setItem(applicationKey, JSON.stringify(applications)); } catch {}
+}
+function onboardingView(id) {
+  if (id === 'review' && !isAdmin) return;
+  for (const section of ['login', 'application', 'review']) $(section).hidden = section !== id;
+  $(id).querySelector('h1,h2')?.setAttribute('tabindex', '-1');
+  $(id).querySelector('h1,h2')?.focus();
+}
+function reviewApplications() {
+  if (!isAdmin) return;
+  const month = $('admin-month').value;
+  const approved = applications.filter(item => item.status === 'Approved');
+  const partners = [
+    { key: 'influencer.demo', name: 'Influencer · demo' },
+    { key: 'teste.demo', name: 'Test partner · demo' },
+    ...approved.map(item => ({ key: 'partner-' + item.token, name: item.name }))
+  ];
+  const ranking = partners.map(partner => {
+    const sales = demoSales.filter(row => row[0] === partner.key && paidDates[row[1]].startsWith(month) && row[3] > 0);
+    return { name: partner.name, orders: sales.length, total: sales.reduce((sum, row) => sum + row[3], 0) };
+  }).sort((a, b) => b.total - a.total || b.orders - a.orders || a.name.localeCompare(b.name));
+  const selling = ranking.filter(item => item.orders > 0).length;
+  $('admin-pending').textContent = applications.filter(item => item.status === 'Pending').length;
+  $('admin-approved').textContent = approved.length;
+  $('admin-selling').textContent = selling;
+  $('admin-inactive').textContent = ranking.length - selling;
+  putRows('admin-ranking', ranking.map(item => [
+    item.name, item.orders ? 'Selling' : 'No sales', item.orders, display(item.total)
+  ]), 4);
+  const filter = $('application-filter').value;
+  const visible = applications.filter(item => !filter || item.status === filter);
+  $('review-list').replaceChildren();
+  if (!visible.length) $('review-list').textContent = 'No applications for this status.';
+  for (const application of visible) {
+    const card = document.createElement('article');
+    card.className = 'application-record';
+    const heading = document.createElement('h3');
+    heading.textContent = application.name + ' · ' + application.status;
+    card.append(heading);
+    const details = document.createElement('p');
+    details.textContent = [application.email, application.country, application.bio].filter(Boolean).join(' · ');
+    card.append(details);
+    const links = document.createElement('p');
+    links.className = 'channel-links';
+    const channels = [['Instagram', application.instagram], ['TikTok', application.tiktok], ['YouTube', application.youtube], ['Facebook', application.facebook], ['Profile', application.profile]];
+    for (const [label, url] of channels) {
+      if (!url) continue;
+      const a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.textContent = label;
+      links.append(a);
+    }
+    if (!links.childElementCount) links.textContent = 'No channel links provided.';
+    card.append(links);
+    if (application.status === 'Pending') {
+      for (const status of ['Approved', 'Declined']) {
+        const button = document.createElement('button');
+        button.textContent = status === 'Approved' ? 'Approve and create link' : 'Decline';
+        button.className = status === 'Approved' ? '' : 'quiet';
+        button.addEventListener('click', () => {
+          if (!isAdmin || application.status !== 'Pending') return;
+          application.status = status;
+          if (status === 'Approved') {
+            application.token = crypto.randomUUID();
+            application.referral = 'partner-' + crypto.randomUUID().slice(0, 8);
+            sendDemoMail(application.email, 'Welcome to Jouvèl Partners', 'Hi ' + application.name + ',\n\nYour application has been approved. Welcome to Jouvèl Partners.\n\nTo sign in, open ' + PORTAL + ' and enter this email address. We will send you a one-time code each time you sign in. There is no password to remember.\n\nInside you will find your referral link, your commissions and the program policy.\n\nJouvèl Partners');
+          } else {
+            sendDemoMail(application.email, 'Your Jouvèl partner application', 'Hi ' + application.name + ',\n\nThank you for your interest in Jouvèl. We are not able to approve your application at this time.\n\nJouvèl Partners');
+          }
+          saveApplications();
+          reviewApplications();
+        });
+        card.append(button, ' ');
+      }
+    }
+    if (application.token) {
+      const link = document.createElement('a');
+      link.href = '#invite=' + application.token;
+      link.textContent = 'Open partner access link';
+      card.append(link);
+    }
+    $('review-list').append(card);
+  }
+}
+function openInvite() {
+  const token = new URLSearchParams(location.hash.slice(1)).get('invite');
+  if (!token) return;
+  const approved = applications.find(item => item.status === 'Approved' && item.token === token);
+  if (!approved) {
+    $('login-status').textContent = 'This test invitation is unavailable in this browser.';
+    return;
+  }
+  isAdmin = false;
+  owner = 'partner-' + approved.token;
+  $('review').hidden = $('application').hidden = true;
+  render().catch(error => { $('login-status').textContent = error.message; });
+}
+$('open-apply').addEventListener('click', () => onboardingView('application'));
+$('admin-month').addEventListener('change', reviewApplications);
+$('application-filter').addEventListener('change', reviewApplications);
+$('admin-logout').addEventListener('click', () => {
+  isAdmin = false;
+  $('review-list').replaceChildren();
+  $('user').value = '';
+  onboardingView('login');
+});
+for (const button of document.querySelectorAll('[data-back]')) {
+  button.addEventListener('click', () => onboardingView('login'));
+}
+$('application-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const input = Object.fromEntries(new FormData(event.currentTarget));
+  input.email = input.email.trim().toLowerCase();
+  const channelInputs = [...event.currentTarget.querySelectorAll('#app-channels input')];
+  let channelCount = 0;
+  for (const field of channelInputs) {
+    const value = (input[field.name] || '').trim();
+    input[field.name] = value;
+    if (!value) continue;
+    let host = '';
+    try { host = new URL(value).hostname.replace(/^www\.|^m\.|^web\./, ''); } catch {}
+    const expected = field.dataset.host;
+    if (host !== expected && !host.endsWith('.' + expected) && !(expected === 'youtube.com' && host === 'youtu.be') && !(expected === 'facebook.com' && host === 'fb.com')) {
+      $('application-status').textContent = 'Please check the ' + field.labels[0].textContent + '. It should be a link on ' + expected + '.';
+      field.focus();
+      return;
+    }
+    channelCount++;
+  }
+  if (!channelCount) {
+    $('application-status').textContent = 'Add at least one channel link: Instagram, TikTok, YouTube or Facebook.';
+    channelInputs[0].focus();
+    return;
+  }
+  if (applications.some(item => item.email === input.email && item.status !== 'Declined')) {
+    $('application-status').textContent = 'An active application already exists for this email.';
+    return;
+  }
+  applications.push({ ...input, status: 'Pending' });
+  saveApplications();
+  sendDemoMail(input.email, 'We received your Jouvèl partner application', 'Hi ' + input.name + ',\n\nThank you for applying to become a Jouvèl partner. Márcia reviews every application personally and we will email you once it has been reviewed.\n\nJouvèl Partners');
+  sendDemoMail(ADMIN_EMAIL, 'New partner application: ' + input.name, input.name + ' (' + input.email + ') applied to become a Jouvèl partner.\n\nReview it at ' + PORTAL);
+  $('application-status').textContent = 'Application added to Márcia’s review queue in this demo.';
+  event.currentTarget.reset();
+});
+window.addEventListener('hashchange', openInvite);
+async function api(path, payload) {
+  const [route, query] = path.split('?');
+  if (route === '/api/login/start') {
+    const account = accountFor(payload.email);
+    if (account) {
+      const code = String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, '0');
+      pendingCode = { email: payload.email, code, expires: Date.now() + 10 * 60 * 1000, attempts: 0 };
+      sendDemoMail(payload.email, 'Your Jouvèl Partners sign-in code: ' + code, 'Your sign-in code is ' + code + '\n\nIt expires in 10 minutes and works once. If you did not try to sign in, you can ignore this email.\n\nJouvèl Partners');
+    }
+    return { message: 'If this email is registered, a sign-in code is on its way.' };
+  }
+  if (route === '/api/login/verify') {
+    if (!pendingCode || pendingCode.email !== payload.email || pendingCode.expires < Date.now() || pendingCode.attempts >= 5) {
+      throw new Error('This code has expired. Request a new one.');
+    }
+    if (pendingCode.code !== payload.code) {
+      pendingCode.attempts++;
+      throw new Error('That code is not right. Check the latest email.');
+    }
+    pendingCode = null;
+    const account = accountFor(payload.email);
+    if (!account) throw new Error('Sign in to continue');
+    isAdmin = account.role === 'admin';
+    owner = account.owner || '';
+    return account;
+  }
+  if (!owner) throw new Error('Sign in to continue');
+  if (route === '/api/logout') {
+    owner = '';
+    return {};
+  }
+  const now = Date.parse(new URLSearchParams(query).get('date'));
+  if (!Number.isFinite(now)) throw new Error('Choose a preview date');
+  const sales = demoSales.filter(row => row[0] === owner && Date.parse(paidDates[row[1]]) <= now).map(([, id, deliveredAt, netCents, rate, returnOpen]) => {
+    const sale = { id, deliveredAt, netCents, rate, returnOpen };
+    return { id, deliveredAt, paidAt: paidDates[id], netCents, rate, returnOpen, amount: commissionCents(sale), status: requests[id] ? 'Requested' : commissionStatus(sale, now) };
+  });
+  if (route === '/api/sales') return { owner, sales };
+  const available = sales.filter(sale => sale.status === 'Available');
+  if (!available.length) throw new Error('No available balance');
+  const id = Date.now().toString(36);
+  for (const sale of available) requests[sale.id] = id;
+  try { localStorage.setItem(storageKey, JSON.stringify(requests)); } catch {}
+  return { id };
+}
+
+function pathWithDate(path) {
+  return path + '?' + new URLSearchParams({ date: $('date').value });
+}
+
+function putRows(id, values, width, labels = []) {
+  const table = $(id).closest('table');
+  if (!labels.length) labels = Array.from(table.querySelectorAll('thead th'), cell => cell.textContent);
+  table.setAttribute('role', 'table');
+  for (const group of [table.tHead, $(id)]) group.setAttribute('role', 'rowgroup');
+  for (const header of table.querySelectorAll('thead th')) {
+    header.parentElement.setAttribute('role', 'row');
+    header.setAttribute('role', 'columnheader');
+  }
+  const rows = values.map(values => {
+    const row = document.createElement('tr');
+    if (labels.length) row.setAttribute('role', 'row');
+    values.forEach((value, index) => {
+      const cell = row.insertCell();
+      cell.textContent = value;
+      if (labels.length) {
+        cell.dataset.label = labels[index];
+        cell.setAttribute('role', 'cell');
+      }
+    });
+    return row;
+  });
+  if (!rows.length) {
+    const row = document.createElement('tr');
+    const cell = row.insertCell();
+    row.setAttribute('role', 'row');
+    cell.setAttribute('role', 'cell');
+    cell.colSpan = width;
+    cell.textContent = 'No activity for this period.';
+    rows.push(row);
+  }
+  $(id).replaceChildren(...rows);
+}
+const total = (sales, key, state) => sales.reduce((sum, sale) => sum + (!state || sale.status === state ? sale[key] : 0), 0);
+const eligible = sales => sales.filter(sale => sale.netCents > 0 && !sale.returnOpen).length;
+const money = (sales, state) => display(total(sales, 'amount', state));
+const monthOf = sale => sale.paidAt.slice(0, 7);
+const monthLabel = value => new Intl.DateTimeFormat('en-AU', {month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(value + '-01'));
+async function render() {
+  const { owner, sales } = await api(pathWithDate('/api/sales'));
+  const approved = applications.find(item => 'partner-' + item.token === owner && item.status === 'Approved');
+  $('owner').textContent = approved?.name || owner;
+  const australian = approved ? approved.country === 'Australia' : ['influencer.demo', 'teste.demo'].includes(owner);
+  $('payout-profile').hidden = !australian;
+  const payoutProfile = australian ? payoutProfiles[owner] : null;
+  $('payout-identity').value = payoutProfile?.identity || '';
+  $('payout-bank').value = payoutProfile?.bank || '';
+  $('payout-profile-status').textContent = payoutProfile ? 'Demo payout details saved.' : 'Payout details not yet saved.';
+  $('referral').value = 'https://jouvel.com.au/?ref=' + encodeURIComponent(approved ? approved.referral || 'partner-demo' : owner.split('.')[0] + '-demo');
+  $('login').hidden = true;
+  $('dashboard').hidden = false;
+  const current = $('date').value.slice(0,7);
+  const allMonths = [...new Set([current, ...sales.map(monthOf)])].sort().reverse();
+  const selected = $('month').value;
+  $('month').replaceChildren(...allMonths.map(month => new Option(monthLabel(month),month)));
+  $('month').value = allMonths.includes(selected) ? selected : current;
+  const reported = sales.filter(sale => monthOf(sale) === $('month').value);
+  const quantity = eligible(sales.filter(sale => monthOf(sale) === current));
+  const nextBag = quantity + 1;
+  const rate = nextBag <= 10 ? 10 : nextBag <= 50 ? 12 : 15;
+  const target = rate === 10 ? 11 : 51;
+  $('tier').textContent = rate + '% on your next eligible bag';
+  $('tier-detail').textContent = quantity + ' eligible bags in ' + monthLabel(current) +
+    (rate === 15 ? ' · Top band' : ' · Higher rate begins at bag ' + target);
+  $('progress').max = target;
+  $('progress').value = Math.min(quantity, target);
+  $('order-count').textContent = reported.length;
+  $('net-sales').textContent = display(total(reported, 'netCents'));
+  for (const [id,status] of [['hold','On hold'],['available','Available'],['requested','Requested']]) {
+    $(id).textContent = money(sales,status);
+  }
+  putRows('months', allMonths.map(month => {
+    const group = sales.filter(sale => monthOf(sale) === month);
+    return [monthLabel(month),group.length,eligible(group),display(total(group,'netCents')),money(group),money(group,'On hold'),money(group,'Available'),money(group,'Requested')];
+  }), 8);
+  $('request').disabled = !sales.some(sale => sale.status === 'Available');
+  putRows('orders', sales.map(sale => [sale.id,sale.paidAt,sale.deliveredAt || 'Awaiting delivery',sale.rate+'%',display(sale.amount),sale.status]), 6);
+  const requestedSales = sales.filter(sale => sale.status === 'Requested');
+  $('statement-owner').textContent = owner;
+  $('statement-total').textContent = money(requestedSales);
+  putRows('statement-rows', requestedSales.map(sale => [
+    sale.id, sale.paidAt, requests[sale.id], display(sale.amount)
+  ]), 4, ['Order', 'Paid date', 'Payout reference', 'Commission']);
+  putRows('return-rows', sales.filter(sale => sale.returnOpen || sale.netCents === 0).map(sale =>
+    [sale.id,sale.returnOpen ? 'Open return' : 'Fully refunded',sale.returnOpen ? display(sale.amount)+' on hold' : 'Commission reversed']),3);
+}
+for (const tab of document.querySelectorAll('[data-tab]')) {
+  tab.addEventListener('click', () => {
+    for (const button of document.querySelectorAll('[data-tab]')) {
+      const active = button === tab;
+      button.setAttribute('aria-pressed', active);
+      $(button.dataset.tab).hidden = !active;
+    }
+  });
+}
+$('print-statement').addEventListener('click', () => {
+  document.body.classList.add('printing');
+  try { window.print(); } finally { document.body.classList.remove('printing'); }
+});
+$('payout-profile').addEventListener('submit', event => {
+  event.preventDefault();
+  if (!owner || event.currentTarget.hidden) return;
+  payoutProfiles[owner] = { identity: $('payout-identity').value, bank: $('payout-bank').value };
+  try { localStorage.setItem(payoutProfileKey, JSON.stringify(payoutProfiles)); } catch {}
+  $('payout-profile-status').textContent = 'Demo payout details saved.';
+});
+$('invoice-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const file = $('invoice-file').files[0];
+  if (!file) return;
+  try {
+    const header = await file.slice(0, 5).text();
+    $('invoice-status').textContent = header === '%PDF-' ?
+      'PDF recognised: ' + file.name + '. This demo has not sent or stored the invoice.' :
+      'Select a valid PDF document.';
+  } catch { $('invoice-status').textContent = 'The file could not be read.'; }
+});
+$('month').addEventListener('change', () => render().catch(() => {}));
+$('copy').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText($('referral').value);
+    $('copy-status').textContent = 'Link copied.';
+  } catch {
+    $('referral').select();
+    $('copy-status').textContent = 'Link selected. Press Command+C or Ctrl+C to copy.';
+  }
+});
+$('login-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  try {
+    const email = $('user').value.trim().toLowerCase();
+    if ($('code-step').hidden) {
+      const { message } = await api('/api/login/start', { email });
+      $('login-status').textContent = message;
+      $('code-step').hidden = false;
+      $('password').required = true;
+      $('login-button').textContent = 'Sign in';
+      $('password').focus();
+      return;
+    }
+    const session = await api('/api/login/verify', { email, code: $('password').value.replace(/\D/g, '') });
+    $('password').value = '';
+    $('login-status').textContent = '';
+    $('code-step').hidden = true;
+    $('password').required = false;
+    $('login-button').textContent = 'Email me a code';
+    if (session.role === 'admin') {
+      reviewApplications();
+      onboardingView('review');
+    } else {
+      await render();
+    }
+  } catch (error) { $('login-status').textContent = error.message; }
+});
+$('logout').addEventListener('click', async () => {
+  await api('/api/logout', {});
+  location.hash = '';
+  location.reload();
+});
+$('date').addEventListener('change', () => render().catch(error => { $('notice').textContent = error.message; }));
+$('request').addEventListener('click', async () => {
+  $('request').disabled = true;
+  try {
+    const { id } = await api(pathWithDate('/api/payout'), {});
+    await render();
+    $('notice').textContent = 'Test request ' + id + ' recorded. No payment was sent.';
+  } catch (error) {
+    $('notice').textContent = error.message;
+    await render().catch(() => {});
+  }
+});
+$('reset').addEventListener('click', async () => {
+  requests = {};
+  try { localStorage.removeItem(storageKey); } catch {}
+  $('notice').textContent = 'Demo reset.';
+  await render();
+});
+$('inbox-clear').addEventListener('click', () => {
+  inbox = [];
+  try { localStorage.removeItem(inboxKey); } catch {}
+  renderInbox();
+});
+renderInbox();
+openInvite();
+</script>
+</html>
